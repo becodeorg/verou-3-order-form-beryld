@@ -48,15 +48,31 @@ $products = [
 
 $totalValue = 0;
 
+
+$formSubmitted = 0;
+
+echo $formSubmitted ;
+if(isset($_POST['submitBtn'])){
+    $formSubmitted = true;
+    echo "after $formSubmitted";
+    if($formSubmitted == 1){
+        handleForm($products);
+    }
+}
+
 function validate()
 {
+    
     // This function will send a list of invalid fields back
-    return [];
+    // var_dump("hello here is validate functn  validate() ");
+    return [$_POST["email"], $_POST["streetnumber"], $_POST["zipcode"], $_POST["city"], $_POST["street"], $_POST["products"]];
+    
 }
+
 
 function handleForm($products)
 {
-    // TODO: form related tasks (step 1)
+    
     if (isset($_POST["products"])){
         $productName = ($_POST["products"]);
         $clientAddress = ($_POST["street"]);
@@ -70,19 +86,27 @@ function handleForm($products)
     }
     
 
+       // TODO: handle errors
+      // TODO: handle successful submission
+
     // Validation (step 2)
-    // $invalidFields = validate();
-    // if (!empty($invalidFields)) {
-    //     // TODO: handle errors
-    // } else {
-    //     // TODO: handle successful submission
-    // }
+    $invalidFields = validate();
+    $notgood = false;
+    foreach($invalidFields as $field){
+    if (empty($field)) {
+        $notgood = true;
+        
+        } 
+        
+     
+    }
+    if ($notgood == 1) {
+        Echo "Please fill in all required fields"  ;
+    }
+    
 }
-// handleForm($products);
-// TODO: replace this if by an actual check
-// $formSubmitted = false;
-// if ($formSubmitted) {
-//     handleForm();
-// }
+
+
+
 
 require 'form-view.php';
