@@ -26,7 +26,7 @@ function whatIsHappening() {
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
 }
-whatIsHappening();
+// whatIsHappening();
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
@@ -46,15 +46,16 @@ $products = [
 ];
 
 
+
 $totalValue = 0;
 
 
 $formSubmitted = 0;
 
-echo $formSubmitted ;
+
 if(isset($_POST['submitBtn'])){
     $formSubmitted = true;
-    echo "after $formSubmitted";
+    
     if($formSubmitted == 1){
         handleForm($products);
     }
@@ -62,10 +63,25 @@ if(isset($_POST['submitBtn'])){
 
 function validate()
 {
+    $datas = array(
+        ["email" => ($_POST["email"]) ],
+        ["street" => ($_POST["street"]) ],
+        ["streetnumber" => ($_POST["streetnumber"])],
+        ["city" => ($_POST["city"])],
+        ["zipcode" => ($_POST["zipcode"])],
+        ["products" => ($_POST["products"])],
+    );
+    // print_r($datas[1]) ;
+    // print_r(array_keys($datas));
     
+    // echo "one-----------";
+    // var_dump( $datas);
+    // echo "here too";
+    // key($datas);
     // This function will send a list of invalid fields back
     // var_dump("hello here is validate functn  validate() ");
-    return [$_POST["email"], $_POST["streetnumber"], $_POST["zipcode"], $_POST["city"], $_POST["street"], $_POST["products"]];
+    return $datas;
+    // $_POST["email"], $_POST["streetnumber"], $_POST["zipcode"], $_POST["city"], $_POST["street"], $_POST["products"],
     
 }
 
@@ -73,7 +89,46 @@ function validate()
 function handleForm($products)
 {
     
-    if (isset($_POST["products"])){
+    
+    
+
+       // TODO: handle errors
+      // TODO: handle successful submission
+
+    // Validation (step 2)
+    $invalidFields = validate();
+    
+ 
+    // var_dump($invalidFields);
+    $notgood = false;
+    
+    echo 'here';
+    echo $notgood;
+    foreach($invalidFields as $field => $g ){
+        print_r($g);
+        echo $notgood;
+    // if (empty($field)) 
+    // if(in_array("",$g)){echo "helloimhere";}
+    if (in_array("",$g)){
+        $notgood = true;
+        // echo "hello";
+        var_dump ($g);
+        // echo $notgood;
+        
+        
+        
+        
+        
+        
+        }
+    }
+    if ($notgood == true) {
+        Echo "Please fill in all required fields"  ;
+        
+    }
+    echo $notgood;
+
+    if (isset($_POST["products"] )&& $notgood == 0){
         $productName = ($_POST["products"]);
         $clientAddress = ($_POST["street"]);
         $clientCity = ($_POST["city"]);
@@ -84,26 +139,6 @@ function handleForm($products)
         
         
     }
-    
-
-       // TODO: handle errors
-      // TODO: handle successful submission
-
-    // Validation (step 2)
-    $invalidFields = validate();
-    $notgood = false;
-    foreach($invalidFields as $field){
-    if (empty($field)) {
-        $notgood = true;
-        
-        } 
-        
-     
-    }
-    if ($notgood == 1) {
-        Echo "Please fill in all required fields"  ;
-    }
-    
 }
 
 
