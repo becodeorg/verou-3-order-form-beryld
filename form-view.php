@@ -13,6 +13,7 @@
     <title>Your Fancy Fluffy store</title>
 </head>
 <body>
+    
 <div class="container">
     <h1>Fancy a Fluffy cloud ? </h1>
     <?php // Navigation for when you need it ?>
@@ -51,9 +52,10 @@
                 </div>
             <!-- </div> -->
             <!-- <div class="form-row"> -->
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-3" >
                     <label for="city">City:</label>
                     <input type="text" id="city" name="city" class="form-control">
+                    
                 </div>
                 <div class="form-group col-md-3">
                     <label for="zipcode">Zipcode</label>
@@ -70,6 +72,8 @@
                     <!-- hey I added the ID value to be incremented inside the foreachloop  -->
                     <input  type="checkbox"  value="<?php echo $product['name']?>" id="<?php echo $i?>" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
                     &euro; <?= number_format($product['price']) ?>
+                    <img src="./images/cloud.png" alt="" id="heyehey">
+                    
                 </label><br />
             <?php endforeach; ?>
         </fieldset>

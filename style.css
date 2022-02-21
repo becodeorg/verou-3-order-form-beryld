@@ -1,12 +1,27 @@
 body{
-    background-color: rgba(247, 248, 255, 0.212);
-}
-
-.container{
+    background-color: rgba(242, 243, 248, 0.212);
+    color:rgb(128, 154, 240);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
     
 }
+
+
 
 .hey{
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     
+    
+
+
+
 }
+
+#heyehey{
+
+width: 50px;
+
+}
+

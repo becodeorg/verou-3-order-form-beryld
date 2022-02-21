@@ -73,7 +73,7 @@ function handleForm($products)
     foreach($invalidFields as $field => $g ){
     if (in_array("",$g)){
         $notgood = true;
-        setcookie($field);
+        // setcookie($field);
         
         }
     }
@@ -108,7 +108,7 @@ function handleForm($products)
         
         
 
-        echo  implode('<br>  '  ,$_POST['products'],) . " <br> Will be delivered to :  " . $_POST['street'] . " " . $_POST['streetnumber'] . " " . $_POST['city'] . " <br> <br> Sorry we don't know your name .... let's hope you receive it ... anyway a cloud in a mailbox ???? ";
+        echo  implode('<br>  '  ,$_POST['products'],) . " <br> Look up by the window at :  " . $_POST['street'] . " " . $_POST['streetnumber'] . " " . $_POST['city'] . " there should be your clouds " ;
         // echo implode"<div class='alert alert-primary' role='alert'> (', ' ,$productName) . " Will be delivered to :  " . $clientAddress . " " . $clientCity; </div>";
         
     }
