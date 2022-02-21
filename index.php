@@ -30,16 +30,16 @@ function whatIsHappening() {
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
-    ['name' => 'Cirrus', 'price' => 2500],
-    ['name' => 'Cirrocumulus', 'price' => 2400],
-    ['name' => 'Cirrostratus', 'price' =>2300],
-    ['name' => 'Altocumulus', 'price' =>2200],
-    ['name' => 'Altostratus', 'price' =>2100],
-    ['name' => 'Nimbostratus', 'price' =>2000],
-    ['name' => 'Stratocumulus', 'price' =>1900],
-    ['name' => 'Stratus', 'price' =>1800],
-    ['name' => 'Cumulus', 'price' =>1700],
-    ['name' => 'Cumulonimbus', 'price' =>1600],
+    ['name' => 'Cirrus', 'price' => 25000],
+    ['name' => 'Cirrocumulus', 'price' => 24000],
+    ['name' => 'Cirrostratus', 'price' =>23000],
+    ['name' => 'Altocumulus', 'price' =>22000],
+    ['name' => 'Altostratus', 'price' =>21000],
+    ['name' => 'Nimbostratus', 'price' =>20000],
+    ['name' => 'Stratocumulus', 'price' =>19000],
+    ['name' => 'Stratus', 'price' =>18000],
+    ['name' => 'Cumulus', 'price' =>17000],
+    ['name' => 'Cumulonimbus', 'price' =>16000],
     
     
 
@@ -111,22 +111,48 @@ function handleForm($products)
     // if(in_array("",$g)){echo "helloimhere";}
     if (in_array("",$g)){
         $notgood = true;
-        // echo "hello";
         var_dump ($g);
-        // echo $notgood;
-        
-        
-        
-        
-        
-        
         }
     }
     if ($notgood == true) {
         Echo "Please fill in all required fields"  ;
-        
     }
-    echo $notgood;
+    
+
+
+    if (isset($_POST["zipcode"]) && 1 === preg_match("/^[0-9]{4}$/", $_POST["zipcode"]) ){
+        echo "that's alright !";
+
+    }
+    else{
+        echo "Zipcode needs to be 4 digits number ";
+    }
+
+    if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL )){
+       echo " not good lar ! ";
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if (isset($_POST["products"] )&& $notgood == 0){
         $productName = ($_POST["products"]);
