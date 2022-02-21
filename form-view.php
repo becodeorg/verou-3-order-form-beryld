@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
+    <link rel="stylesheet" href="./style.css">
     <title>Your Fancy Fluffy store</title>
 </head>
 <body>
@@ -29,7 +30,7 @@
     */ ?>
     <form action="index.php" method="post">
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3"  >
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" class="form-control"/>
             </div>
@@ -40,34 +41,34 @@
             <legend>Address</legend>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label for="street">Street:</label>
                     <input type="text" name="street" id="street" class="form-control" value="">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-2">
                     <label for="streetnumber">Street number:</label>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control">
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
+            <!-- </div> -->
+            <!-- <div class="form-row"> -->
+                <div class="form-group col-md-3">
                     <label for="city">City:</label>
                     <input type="text" id="city" name="city" class="form-control">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                     <label for="zipcode">Zipcode</label>
                     <input type="text" id="zipcode" name="zipcode" class="form-control">
                 </div>
             </div>
         </fieldset>
 
-        <fieldset name="cloud" action="GET">
+        <fieldset class="hey" name="cloud" action="GET">
             <legend>Clouds</legend>
             <?php foreach ($products as $i => $product): ?>
                 <label>
 					<?php // <?= is equal to <?php echo ?>   
                     <!-- hey I added the ID value to be incremented inside the foreachloop  -->
-                    <input type="checkbox"  value="<?php echo $product['name']?>" id="<?php echo $i?>" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
+                    <input  type="checkbox"  value="<?php echo $product['name']?>" id="<?php echo $i?>" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
                     &euro; <?= number_format($product['price']) ?>
                 </label><br />
             <?php endforeach; ?>

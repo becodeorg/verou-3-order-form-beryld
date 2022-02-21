@@ -50,7 +50,10 @@ function validate()
         ["zipcode" => ($_POST["zipcode"])],
         ["products" => ($_POST["products"])],
     );
+    // $_SESSION=$datas;
+    
     return $datas;
+    
     // $_POST["email"], $_POST["streetnumber"], $_POST["zipcode"], $_POST["city"], $_POST["street"], $_POST["products"],
     
 }
@@ -70,6 +73,7 @@ function handleForm($products)
     foreach($invalidFields as $field => $g ){
     if (in_array("",$g)){
         $notgood = true;
+        setcookie($field);
         
         }
     }
@@ -101,17 +105,18 @@ function handleForm($products)
     
 
     if (isset($_POST["products"] )&& $notgood == 0 && $condi1== 1 && $condi2 == 0){
-        $productName = ($_POST["products"]);
-        $clientAddress = ($_POST["street"]);
-        $clientCity = ($_POST["city"]);
-
-        echo implode(', ' ,$productName) . " Will be delivered to :  " . $clientAddress . " " . $clientCity;
         
+        
+
+        echo  implode('<br>  '  ,$_POST['products'],) . " <br> Will be delivered to :  " . $_POST['street'] . " " . $_POST['streetnumber'] . " " . $_POST['city'] . " <br> <br> Sorry we don't know your name .... let's hope you receive it ... anyway a cloud in a mailbox ???? ";
+        // echo implode"<div class='alert alert-primary' role='alert'> (', ' ,$productName) . " Will be delivered to :  " . $clientAddress . " " . $clientCity; </div>";
         
     }
+    
 }
 
-
+// print_r($_SESSION);
+// print_r($_COOKIE);
 
 
 require 'form-view.php';
